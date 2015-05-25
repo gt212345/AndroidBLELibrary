@@ -47,7 +47,6 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
 
     public BLESetupWizard(Context context) {
         this.context = context;
-        progressDialog = ProgressDialog.show(context, "Please wait", "Connecting......", true);
         toast = Toast.makeText(context,"",Toast.LENGTH_SHORT);
         handlerThread = new HandlerThread("SetupThread");
         handler = new Handler(handlerThread.getLooper());
@@ -114,6 +113,7 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
     }
 
     public void startScanning(int millisecond) {
+        progressDialog = ProgressDialog.show(context, "Please wait", "Connecting......", true);
         handler.post(new Runnable() {
             @Override
             public void run() {
