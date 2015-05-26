@@ -1,4 +1,4 @@
-package com.ppsoc.hrw.myapplication;
+package com.ppsoc.hrw.AndroidBLE;
 
 /**
  * Created by User on 2015/5/25.

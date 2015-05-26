@@ -1,4 +1,4 @@
-package com.ppsoc.hrw.myapplication;
+package com.ppsoc.hrw.AndroidBLE;
 
 import android.content.Context;
 import android.os.Bundle;
