@@ -25,6 +25,9 @@ public class BLESetupActivity extends UnityPlayerActivity {
     public void setOnDataTransferListener (OnDataTransferListener listener) {
         bleSetupWizard.setOnDataTransferListener(listener);
     }
+    public void setCC(boolean isCC) {
+        bleSetupWizard.setCC(isCC);
+    }
 
     public void startScan(int millisecond){
         bleSetupWizard.startScanning(millisecond);

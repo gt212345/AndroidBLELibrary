@@ -131,6 +131,22 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
         },millisecond);
     }
 
+    /**
+     * Set CC or not
+     * @param isCC
+     */
+    public void setCC(boolean isCC) {
+        byte [] value = new byte[2];
+        if (isCC) {
+            value[0] = Byte.parseByte("01100010",2);
+        } else {
+            value[0] = Byte.parseByte("01100110",2);;
+        }
+        value[1] = 8;
+        bluetoothGattCharacteristicSet.setValue(value);
+        bluetoothGatt.writeCharacteristic(bluetoothGattCharacteristicSet);
+    }
+
 
     @Override
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
