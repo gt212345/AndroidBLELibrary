@@ -37,6 +37,7 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
     OnDataTransferListener listener;
 
     byte[] data;
+    int[] dataXYZ;
 
     Handler handler;
     HandlerThread handlerThread;
@@ -47,6 +48,7 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
 
     public BLESetupWizard(Context context) {
         this.context = context;
+        dataXYZ = new int[3];
         toast = Toast.makeText(context,"",Toast.LENGTH_SHORT);
         handlerThread = new HandlerThread("SetupThread");
         handler = new Handler(handlerThread.getLooper());
@@ -91,6 +93,9 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
                     if (listener != null) {
                         listener.onDataTransfer(ByteParse.sIN16From2Byte(data[8], data[9]) / 128,ByteParse.sIN16From2Byte(data[10], data[11]) / 128,ByteParse.sIN16From2Byte(data[12],data[13]) / 128);
                     }
+                    dataXYZ[0] = ByteParse.sIN16From2Byte(data[8], data[9]) / 128;
+                    dataXYZ[1] = ByteParse.sIN16From2Byte(data[10], data[11]) / 128;
+                    dataXYZ[2] = ByteParse.sIN16From2Byte(data[12], data[13]) / 128;
                 }
             }
         };
@@ -153,5 +158,9 @@ public class BLESetupWizard implements  BluetoothAdapter.LeScanCallback{
         if(bluetoothDevice.getName().equals(DEVICE_NAME)){
             bluetoothGatt = bluetoothDevice.connectGatt(context, false, bluetoothGattCallback);
         }
+    }
+
+    public int[] getData() {
+        return dataXYZ;
     }
 }

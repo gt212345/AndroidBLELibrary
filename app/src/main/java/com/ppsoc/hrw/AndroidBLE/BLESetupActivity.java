@@ -41,4 +41,8 @@ public class BLESetupActivity extends UnityPlayerActivity {
         }
     }
 
+    public int[] getData() {
+        return bleSetupWizard.getData();
+    }
+
 }
