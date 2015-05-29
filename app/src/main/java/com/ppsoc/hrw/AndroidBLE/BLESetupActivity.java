@@ -33,4 +33,12 @@ public class BLESetupActivity extends UnityPlayerActivity {
         bleSetupWizard.startScanning(millisecond);
     }
 
+    public boolean testFuction(String test) {
+        if(test.equals("test")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
